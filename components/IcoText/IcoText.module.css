@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  color: black;
+  font-size: 2rem;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.8rem;
+}

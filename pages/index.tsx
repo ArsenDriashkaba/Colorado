@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import IcoText from "../components/IcoText/IcoText";
 import Logo from "../components/Logo/Logo";
 import styles from "../styles/Home.module.css";
 
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <Logo />
+        <IcoText text="test" icoPath="favicon.ico" altIcoText="test ico" />
       </main>
     </div>
   );
