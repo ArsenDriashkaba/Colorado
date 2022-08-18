@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import styles from "./IcoText.module.css";
+import styles from "./IcoTextButton.module.css";
 
 interface Props {
   text: string;
@@ -8,9 +8,9 @@ interface Props {
   altIcoText: string;
 }
 
-const IcoText = ({ text, icoPath, altIcoText }: Props): JSX.Element => {
+const IcoTextButton = ({ text, icoPath, altIcoText }: Props): JSX.Element => {
   return (
-    <div className={styles.container}>
+    <button className={styles.container}>
       <div className={styles.imageContainer}>
         <Image
           src={`/static/icons/${icoPath}`}
@@ -21,8 +21,8 @@ const IcoText = ({ text, icoPath, altIcoText }: Props): JSX.Element => {
         />
       </div>
       {text}
-    </div>
+    </button>
   );
 };
 
-export default IcoText;
+export default IcoTextButton;

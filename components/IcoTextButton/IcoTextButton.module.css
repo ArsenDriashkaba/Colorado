@@ -3,6 +3,9 @@
   color: black;
   font-size: 2rem;
   align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .imageContainer {
