@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import Logo from "../components/Logo/Logo";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -12,7 +12,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/static/icons/chromatic.png" />
       </Head>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <Logo />
+      </main>
     </div>
   );
 };

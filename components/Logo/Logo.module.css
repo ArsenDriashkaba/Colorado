@@ -1,0 +1,30 @@
+.wrapper {
+  font-size: 3.6rem;
+  font-weight: 600;
+}
+
+.c {
+  color: rgb(252, 23, 23);
+}
+
+.o {
+  color: rgb(255, 200, 4);
+}
+
+.l {
+  color: rgb(25, 177, 0);
+}
+
+.o2 {
+  color: rgb(72, 91, 255);
+}
+
+.r {
+  color: rgb(196, 36, 253);
+}
+
+.rest {
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: black;
+}
