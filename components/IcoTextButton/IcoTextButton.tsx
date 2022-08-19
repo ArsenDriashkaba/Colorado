@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MouseEventHandler } from "react";
 
 import styles from "./IcoTextButton.module.css";
 
@@ -6,11 +7,17 @@ interface Props {
   text: string;
   icoPath: string;
   altIcoText: string;
+  onClick: MouseEventHandler;
 }
 
-const IcoTextButton = ({ text, icoPath, altIcoText }: Props): JSX.Element => {
+const IcoTextButton = ({
+  text,
+  icoPath,
+  altIcoText,
+  onClick,
+}: Props): JSX.Element => {
   return (
-    <button className={styles.container}>
+    <button className={styles.container} onClick={onClick}>
       <div className={styles.imageContainer}>
         <Image
           src={`/static/icons/${icoPath}`}

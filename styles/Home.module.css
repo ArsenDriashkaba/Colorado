@@ -1,11 +1,15 @@
 .main {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: white;
   background-image: url("/static/images/Ellipse.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed;
+  background-size: 130vh;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  min-height: calc(85vh - var(--header-height));
+  padding: 0 4%;
 }

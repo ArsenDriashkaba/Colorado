@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import IcoTextButton from "../components/IcoTextButton/IcoTextButton";
-import Logo from "../components/Logo/Logo";
+import Banner from "../components/Banner/Banner";
+import Header from "../components/Header/Header";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -14,12 +14,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Logo />
-        <IcoTextButton
-          text="test"
-          icoPath="favicon.ico"
-          altIcoText="test ico"
-        />
+        <Header />
+        <section className={styles.contentWrapper}>
+          <Banner />
+        </section>
       </main>
     </div>
   );
