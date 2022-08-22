@@ -1,5 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import Input from "../components/Input/Input";
+import ColorPaletteProvider from "../context/colorPaletteContext";
 
 import styles from "../styles/Editor.module.css";
 
@@ -12,7 +14,9 @@ const Editor: NextPage = () => {
         <link rel="icon" href="/static/icons/chromatic.png" />
       </Head>
 
-      <main className={styles.main}></main>
+      <ColorPaletteProvider>
+        <main className={styles.main}></main>
+      </ColorPaletteProvider>
     </div>
   );
 };
