@@ -2,6 +2,7 @@ html,
 body {
   font-size: 62.5%;
   color: var(--text-color);
+  overflow: hidden;
 }
 
 :root {
@@ -18,8 +19,12 @@ body {
   --font-size-1: 5.6rem;
   --font-size-2: 2.6rem;
   --font-size-3: 2rem;
+  --font-size-4: 1.6rem;
 
   --header-height: 15vh;
+
+  --colorVariant-width: 16.5%;
+  --menu-width: 17.5%;
 }
 
 * {
@@ -27,11 +32,6 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
-}
-
-main {
-  min-height: 100vh;
-  padding: 0 5%;
 }
 
 a {
@@ -42,6 +42,10 @@ a {
 h2 {
   font-size: var(--font-size-1);
   font-weight: 500;
+}
+
+h3 {
+  font-size: var(--font-size-4);
 }
 
 p {

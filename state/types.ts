@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode } from "react";
 
-export const enum PALETTE_ACTIONS {
+export enum PALETTE_ACTIONS {
   SetColor = "set_color",
   ToggleLock = "toggle_lock",
 }
@@ -15,10 +15,15 @@ export interface PalettePayloadToggleLock {
   isLocked: boolean;
 }
 
-export interface PaletteAction {
-  type: string;
-  payload: PalettePayloadChangeColor & PalettePayloadToggleLock;
-}
+export type PaletteAction =
+  | {
+      type: PALETTE_ACTIONS.SetColor;
+      payload: PalettePayloadChangeColor;
+    }
+  | {
+      type: PALETTE_ACTIONS.ToggleLock;
+      payload: PalettePayloadToggleLock;
+    };
 
 export interface ColorVariant {
   colorValue: string;

@@ -1,15 +1,21 @@
 .container {
   display: flex;
   color: black;
-  font-size: 2rem;
+  font-size: var(--font-size-4);
   align-items: center;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.imageContainer {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-right: 0.8rem;
+.iconDark {
+  color: black;
+}
+
+.iconLight {
+  color: white;
+}
+
+.text {
+  margin-left: 0.8rem;
 }

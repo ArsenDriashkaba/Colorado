@@ -1,5 +1,6 @@
-import IcoTextButton from "../IcoTextButton/IcoTextButton";
+import IcoButton from "../IcoButton/IcoButton";
 import Logo from "../Logo/Logo";
+import { FaUser } from "react-icons/fa";
 
 import styles from "./Header.module.css";
 
@@ -8,10 +9,9 @@ const Header = (): JSX.Element => {
     <header className={styles.mainHeader}>
       <nav>
         <Logo />
-        <IcoTextButton
+        <IcoButton
           text={"Sign In"}
-          icoPath={"chromatic.png"}
-          altIcoText={"Auth ico"}
+          icon={<FaUser />}
           onClick={() => console.log("Logging")}
         />
       </nav>

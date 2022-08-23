@@ -1,9 +1,10 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import Input from "../components/Input/Input";
-import ColorPaletteProvider from "../context/colorPaletteContext";
+import ColorPaletteProvider from "../state/colorPaletteContext";
+import ColorVariant from "../components/ColorVariantList/ColorVariant/ColorVariant";
 
 import styles from "../styles/Editor.module.css";
+import Menu from "../components/Menu/Menu";
 
 const Editor: NextPage = () => {
   return (
@@ -15,7 +16,10 @@ const Editor: NextPage = () => {
       </Head>
 
       <ColorPaletteProvider>
-        <main className={styles.main}></main>
+        <main className={styles.main}>
+          <Menu />
+          <ColorVariant />
+        </main>
       </ColorPaletteProvider>
     </div>
   );

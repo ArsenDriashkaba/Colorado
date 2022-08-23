@@ -1,5 +1,5 @@
 .wrapper {
-  font-size: 3.6rem;
+  font-size: var(--font-size-2);
   font-weight: 600;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .rest {
-  font-size: 3.2rem;
+  font-size: var(--font-size-2);
   font-weight: 300;
   color: black;
 }
