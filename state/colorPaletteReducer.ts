@@ -1,9 +1,5 @@
-import {
-  PaletteState,
-  PaletteAction,
-  PALETTE_ACTIONS,
-  ColorVariant,
-} from "./types";
+import { PaletteAction, PALETTE_ACTIONS } from "./types";
+import { PaletteState, ColorVariant } from "../types";
 
 const colorPaletteReducer = (
   state: PaletteState,
@@ -28,6 +24,8 @@ const colorPaletteReducer = (
 
         return colorVariant;
       });
+    case PALETTE_ACTIONS.SetPalette:
+      return payload.palette;
     default:
       return state;
   }

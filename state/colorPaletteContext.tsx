@@ -1,15 +1,11 @@
-import React, { createContext, useReducer, useContext, Context } from "react";
-import { PaletteState } from "../types";
-import { generateInitialState } from "../utils/colors";
+import React, { createContext, useReducer, useContext } from "react";
 import colorPaletteReducer from "./colorPaletteReducer";
 import { PaletteContext, ProviderChildren } from "./types";
 
 const ColorPaletteContext = createContext<PaletteContext>({} as PaletteContext);
 
 const ColorPaletteProvider = ({ children }: ProviderChildren): JSX.Element => {
-  const initialState: PaletteState = generateInitialState();
-
-  const [state, dispatch] = useReducer(colorPaletteReducer, initialState);
+  const [state, dispatch] = useReducer(colorPaletteReducer, []);
 
   return (
     <ColorPaletteContext.Provider value={{ state, dispatch }}>

@@ -6,8 +6,6 @@ import { useColorPaletteContext } from "../../state/colorPaletteContext";
 import styles from "./EditorContent.module.css";
 
 const EditorContent = (): JSX.Element => {
-  const { state, dispatch } = useColorPaletteContext();
-
   return (
     <section className={styles.container}>
       <Menu />

@@ -20,8 +20,18 @@ export const generateColorVariant = (): ColorVariant => {
   return { isLocked: false, isDark, value };
 };
 
-export const generateInitialState = (): PaletteState => {
-  return [...Array(NUMBER_OF_COLORS)].map(
-    (element): ColorVariant => generateColorVariant()
-  );
+export const generateColorPalette = (palette?: PaletteState): PaletteState => {
+  if (!palette) {
+    return [...Array(NUMBER_OF_COLORS)].map(
+      (_): ColorVariant => generateColorVariant()
+    );
+  }
+
+  return palette.map((colorVariant): ColorVariant => {
+    if (colorVariant.isLocked) {
+      return colorVariant;
+    }
+
+    return generateColorVariant();
+  });
 };

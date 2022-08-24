@@ -5,6 +5,7 @@ import { PaletteState } from "../types";
 export enum PALETTE_ACTIONS {
   SetColor = "set_color",
   ToggleLock = "toggle_lock",
+  SetPalette = "set_palete",
 }
 
 export interface PalettePayloadChangeColor {
@@ -17,6 +18,10 @@ export interface PalettePayloadToggleLock {
   isLocked: boolean;
 }
 
+export interface PalettePayloadSetPalette {
+  palette: PaletteState;
+}
+
 export type PaletteAction =
   | {
       type: PALETTE_ACTIONS.SetColor;
@@ -25,6 +30,10 @@ export type PaletteAction =
   | {
       type: PALETTE_ACTIONS.ToggleLock;
       payload: PalettePayloadToggleLock;
+    }
+  | {
+      type: PALETTE_ACTIONS.SetPalette;
+      payload: PalettePayloadSetPalette;
     };
 
 export interface PaletteContext {
