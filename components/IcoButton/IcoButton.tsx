@@ -7,15 +7,19 @@ interface Props {
   text?: string;
   icon: ReactNode;
   onClick?: MouseEventHandler;
+  isDark: boolean;
 }
 
-const IcoTextButton = ({ text, icon, onClick }: Props): JSX.Element => {
-  const iconSize = text ? "2.5rem" : "5rem";
+const IcoButton = ({ text, icon, onClick, isDark }: Props): JSX.Element => {
+  const iconSize = text ? "2.5rem" : "4.2rem";
 
   return (
     <button className={styles.container} onClick={onClick}>
       <IconContext.Provider
-        value={{ className: styles.iconDark, size: iconSize }}
+        value={{
+          className: isDark ? styles.iconDark : styles.iconLight,
+          size: iconSize,
+        }}
       >
         {icon}
       </IconContext.Provider>
@@ -24,4 +28,4 @@ const IcoTextButton = ({ text, icon, onClick }: Props): JSX.Element => {
   );
 };
 
-export default IcoTextButton;
+export default IcoButton;

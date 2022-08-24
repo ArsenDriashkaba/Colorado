@@ -13,6 +13,7 @@ const Header = (): JSX.Element => {
           text={"Sign In"}
           icon={<FaUser />}
           onClick={() => console.log("Logging")}
+          isDark={true}
         />
       </nav>
     </header>

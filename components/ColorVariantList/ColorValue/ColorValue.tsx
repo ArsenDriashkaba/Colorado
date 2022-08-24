@@ -1,9 +1,18 @@
+import { ColorValue } from "../../../types";
+
 import styles from "./ColorValue.module.css";
 
-const ColorValue = (): JSX.Element => {
+interface Props {
+  value: ColorValue;
+  isDark: boolean;
+}
+
+const ColorValue = ({ value, isDark }: Props): JSX.Element => {
+  const { hex } = { ...value };
+
   return (
     <div className={styles.container}>
-      <h3>rgba(255, 255, 255, 0.2)</h3>
+      <h3 className={isDark ? styles.darkColor : styles.lightColor}>{hex}</h3>
     </div>
   );
 };

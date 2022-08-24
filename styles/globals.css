@@ -2,7 +2,6 @@ html,
 body {
   font-size: 62.5%;
   color: var(--text-color);
-  overflow: hidden;
 }
 
 :root {
@@ -23,7 +22,6 @@ body {
 
   --header-height: 15vh;
 
-  --colorVariant-width: 16.5%;
   --menu-width: 17.5%;
 }
 

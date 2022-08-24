@@ -4,12 +4,12 @@ import ColorVariant from "./ColorVariant/ColorVariant";
 import styles from "./ColorVariantList.module.css";
 
 const ColorVariantList = (): JSX.Element => {
-  const { state, dispatch } = useColorPaletteContext();
+  const { state } = useColorPaletteContext();
 
   return (
     <section className={styles.container}>
-      {state.map((colorVariant, index) => (
-        <ColorVariant key={index} />
+      {state.map((_, index) => (
+        <ColorVariant key={index} colorVariantId={index} />
       ))}
     </section>
   );

@@ -13,22 +13,26 @@ const Menu = (): JSX.Element => {
 
       <ul className={styles.menuWrapper}>
         <li>
-          <IcoButton text="Library" icon={<SiLibrariesdotio />} />
+          <IcoButton text="Library" icon={<SiLibrariesdotio />} isDark={true} />
         </li>
 
         <li>
           <ul>
             <li>
-              <IcoButton text="Generate" icon={<RiRefreshFill />} />
+              <IcoButton
+                text="Generate"
+                icon={<RiRefreshFill />}
+                isDark={true}
+              />
             </li>
             <li>
-              <IcoButton text="Save" icon={<RiSaveFill />} />
+              <IcoButton text="Save" icon={<RiSaveFill />} isDark={true} />
             </li>
           </ul>
         </li>
 
         <li>
-          <IcoButton text="Sign In" icon={<FaUser />} />
+          <IcoButton text="Sign In" icon={<FaUser />} isDark={true} />
         </li>
       </ul>
     </nav>

@@ -1,5 +1,7 @@
 import { Dispatch, ReactNode } from "react";
 
+import { PaletteState } from "../types";
+
 export enum PALETTE_ACTIONS {
   SetColor = "set_color",
   ToggleLock = "toggle_lock",
@@ -24,13 +26,6 @@ export type PaletteAction =
       type: PALETTE_ACTIONS.ToggleLock;
       payload: PalettePayloadToggleLock;
     };
-
-export interface ColorVariant {
-  colorValue: string;
-  isLocked: boolean;
-}
-
-export type PaletteState = ColorVariant[];
 
 export interface PaletteContext {
   state: PaletteState;
