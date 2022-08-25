@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode } from "react";
 
-import { PaletteState } from "../types";
+import { ColorVariant, PaletteState } from "../types";
 
 export enum PALETTE_ACTIONS {
   SetColor = "set_color",
@@ -10,12 +10,11 @@ export enum PALETTE_ACTIONS {
 
 export interface PalettePayloadChangeColor {
   id: number;
-  colorValue: string;
+  newColorVariant: ColorVariant;
 }
 
 export interface PalettePayloadToggleLock {
   id: number;
-  isLocked: boolean;
 }
 
 export interface PalettePayloadSetPalette {

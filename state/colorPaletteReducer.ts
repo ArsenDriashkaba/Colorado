@@ -11,7 +11,7 @@ const colorPaletteReducer = (
     case PALETTE_ACTIONS.SetColor:
       return state.map((colorVariant: ColorVariant, id) => {
         if (id === payload.id) {
-          return { ...colorVariant, colorValue: payload.colorValue };
+          return payload.newColorVariant;
         }
 
         return colorVariant;
@@ -19,7 +19,7 @@ const colorPaletteReducer = (
     case PALETTE_ACTIONS.ToggleLock:
       return state.map((colorVariant: ColorVariant, id) => {
         if (id === payload.id) {
-          return { ...colorVariant, isLocked: payload.isLocked };
+          return { ...colorVariant, isLocked: !colorVariant.isLocked };
         }
 
         return colorVariant;

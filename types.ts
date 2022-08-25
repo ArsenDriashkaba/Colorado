@@ -13,3 +13,21 @@ export interface ColorVariant {
 }
 
 export type PaletteState = ColorVariant[];
+
+interface Transparency {
+  a?: number;
+}
+
+interface RgbObject {
+  r: number;
+  g: number;
+  b: number;
+}
+
+interface HslObject {
+  h: number;
+  s: number;
+  l: number;
+}
+
+export type ColorObject = (Transparency & (RgbObject | HslObject)) | string;

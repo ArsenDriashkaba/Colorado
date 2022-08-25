@@ -1,13 +1,12 @@
 import Color from "color";
 import randomColor from "randomcolor";
 
-import { ColorVariant, PaletteState } from "../types";
+import { ColorVariant, PaletteState, ColorObject } from "../types";
 
 import { NUMBER_OF_COLORS } from "../constants";
 
-export const generateColorVariant = (): ColorVariant => {
-  const randColor = randomColor();
-  const colorObj = Color(randColor);
+export const generateColorVariant = (color?: ColorObject): ColorVariant => {
+  const colorObj = Color(color || randomColor());
 
   const rgb = colorObj;
   const hex = colorObj.hexa();
