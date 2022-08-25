@@ -1,6 +1,7 @@
 import IcoButton from "../../IcoButton/IcoButton";
 import ColorValue from "../ColorValue/ColorValue";
-import { FaLockOpen, FaLock, FaSlidersH } from "react-icons/fa";
+import { FaLockOpen, FaLock } from "react-icons/fa";
+import { BiSliderAlt } from "react-icons/bi";
 import ColorPicker from "../ColorPicker/ColorPicker";
 
 import { rgbaToCssString } from "../../../utils/colors";
@@ -48,7 +49,7 @@ const ColorVariant = ({ colorVariantId }: Props): JSX.Element => {
         />
       ) : (
         <IcoButton
-          icon={<FaSlidersH />}
+          icon={<BiSliderAlt />}
           isDark={!isDark}
           onClick={() => setIsColorPickerOpen(true)}
         />

@@ -20,9 +20,7 @@ interface HsvObject {
   v: number;
 }
 
-export interface ColorModelObject {
-  [key: string]: number;
-}
+export type ColorModelObject = Record<string, number>;
 
 export type RGB = RgbObject & ALphaChannel;
 
