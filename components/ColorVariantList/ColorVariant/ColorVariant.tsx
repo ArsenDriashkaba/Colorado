@@ -1,13 +1,15 @@
 import IcoButton from "../../IcoButton/IcoButton";
 import ColorValue from "../ColorValue/ColorValue";
 import { FaLockOpen, FaLock, FaSlidersH } from "react-icons/fa";
+import ColorPicker from "../ColorPicker/ColorPicker";
+
+import { rgbaToCssString } from "../../../utils/colors";
 
 import { useColorPaletteContext } from "../../../state/colorPaletteContext";
 import { PALETTE_ACTIONS } from "../../../state/types";
+import { ColorVariant } from "../../../types";
 
 import styles from "./ColorVariant.module.css";
-import { ColorVariant } from "../../../types";
-import ColorPicker from "../ColorPicker/ColorPicker";
 
 interface Props {
   colorVariantId: number;
@@ -16,7 +18,7 @@ interface Props {
 const ColorVariant = ({ colorVariantId }: Props): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
   const { value, isLocked, isDark }: ColorVariant = state[colorVariantId];
-  const { hex } = value;
+  const { rgb } = value;
 
   const handleLock = () =>
     dispatch({
@@ -25,7 +27,10 @@ const ColorVariant = ({ colorVariantId }: Props): JSX.Element => {
     });
 
   return (
-    <div className={styles.container} style={{ backgroundColor: `${hex}` }}>
+    <div
+      className={styles.container}
+      style={{ backgroundColor: rgbaToCssString(rgb) }}
+    >
       <ColorValue value={value} isDark={!isDark} />
       <IcoButton
         icon={isLocked ? <FaLock /> : <FaLockOpen />}

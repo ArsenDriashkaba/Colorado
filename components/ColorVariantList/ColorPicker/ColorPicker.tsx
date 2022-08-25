@@ -1,30 +1,33 @@
 import { useEffect, useState } from "react";
-import { ChromePicker } from "react-color";
+import { ChromePicker, ColorResult } from "react-color";
 
 import { useColorPaletteContext } from "../../../state/colorPaletteContext";
 import { PALETTE_ACTIONS } from "../../../state/types";
+import { ColorVariant } from "../../../types";
 
+import { DEFAULT_ALPHA_CHANNEL_VALUE } from "../../../constants";
 import { generateColorVariant } from "../../../utils/colors";
 
 interface Props {
   colorVariantId: number;
 }
 
-const ColorPicker = ({ colorVariantId }: Props): any => {
+const ColorPicker = ({ colorVariantId }: Props): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
 
   const { value } = state[colorVariantId];
 
-  const [colorState, setColorState] = useState(value.hex);
+  const [colorState, setColorState] = useState(value.rgb);
 
-  useEffect(() => setColorState(value.hex), [value]);
+  useEffect(() => setColorState(value.rgb), [value]);
 
-  // ToDO : create type for "color" prop
-  const handleChange = (color: any) => {
-    const hex = color.hex;
-    const newColor = generateColorVariant(hex);
+  const handleChange = (color: ColorResult) => {
+    const { rgb, hex }: ColorResult = { ...color };
+    const alpha: number = rgb.a || DEFAULT_ALPHA_CHANNEL_VALUE;
 
-    setColorState(hex);
+    const newColor: ColorVariant = generateColorVariant(hex, alpha);
+
+    setColorState(rgb);
 
     dispatch({
       type: PALETTE_ACTIONS.SetColor,
