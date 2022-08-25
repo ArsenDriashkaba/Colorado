@@ -7,9 +7,10 @@ import { rgbaToCssString } from "../../../utils/colors";
 
 import { useColorPaletteContext } from "../../../state/colorPaletteContext";
 import { PALETTE_ACTIONS } from "../../../state/types";
-import { ColorVariant } from "../../../types";
+import { ColorVariant, RGB } from "../../../types";
 
 import styles from "./ColorVariant.module.css";
+import { useState } from "react";
 
 interface Props {
   colorVariantId: number;
@@ -17,8 +18,10 @@ interface Props {
 
 const ColorVariant = ({ colorVariantId }: Props): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState<boolean>(false);
+
   const { value, isLocked, isDark }: ColorVariant = state[colorVariantId];
-  const { rgb } = value;
+  const rgb: RGB = value.rgb;
 
   const handleLock = () =>
     dispatch({
@@ -37,8 +40,19 @@ const ColorVariant = ({ colorVariantId }: Props): JSX.Element => {
         isDark={!isDark}
         onClick={handleLock}
       />
-      <IcoButton icon={<FaSlidersH />} isDark={!isDark} />
-      <ColorPicker colorVariantId={colorVariantId} />
+
+      {isColorPickerOpen ? (
+        <ColorPicker
+          colorVariantId={colorVariantId}
+          handleClose={() => setIsColorPickerOpen(false)}
+        />
+      ) : (
+        <IcoButton
+          icon={<FaSlidersH />}
+          isDark={!isDark}
+          onClick={() => setIsColorPickerOpen(true)}
+        />
+      )}
     </div>
   );
 };

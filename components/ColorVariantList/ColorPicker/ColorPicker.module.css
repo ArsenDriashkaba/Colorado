@@ -1,0 +1,15 @@
+.pickerContainer {
+  background-color: white;
+  padding: 10%;
+  border-radius: var(--border-radius-2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButtonContainer {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
