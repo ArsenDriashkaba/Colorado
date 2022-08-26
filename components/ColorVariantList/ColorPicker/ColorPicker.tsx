@@ -10,6 +10,7 @@ import { ColorVariant, RGB } from "../../../types";
 
 import { DEFAULT_ALPHA_CHANNEL_VALUE } from "../../../constants";
 import { generateColorVariant } from "../../../utils/colors";
+import chromePickerStyles from "./styles";
 
 import styles from "./ColorPicker.module.css";
 
@@ -17,15 +18,6 @@ interface Props {
   colorVariantId: number;
   handleClose: MouseEventHandler;
 }
-
-const chromePickerStyles = {
-  default: {
-    picker: {
-      boxShadow: "none",
-      maxWidth: "90%",
-    },
-  },
-};
 
 const ColorPicker = ({ colorVariantId, handleClose }: Props): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
