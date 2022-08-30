@@ -1,17 +1,11 @@
-import { MouseEventHandler, useEffect, useState } from "react";
-import { ChromePicker, ColorResult } from "react-color";
+import { MouseEventHandler } from "react";
+import useHandleColorChange from "../../../hooks/useHandleColorChange";
+import { ChromePicker } from "react-color";
 
 import IcoButton from "../../IcoButton/IcoButton";
 import { GrFormClose } from "react-icons/gr";
 
-import { useColorPaletteContext } from "../../../state/colorPaletteContext";
-import { PALETTE_ACTIONS } from "../../../state/types";
-import { ColorVariant, RGB } from "../../../types";
-
-import { DEFAULT_ALPHA_CHANNEL_VALUE } from "../../../constants";
-import { generateColorVariant } from "../../../utils/colors";
 import chromePickerStyles from "./styles";
-
 import styles from "./ColorPicker.module.css";
 
 interface Props {
@@ -20,38 +14,14 @@ interface Props {
 }
 
 const ColorPicker = ({ colorVariantId, handleClose }: Props): JSX.Element => {
-  const { state, dispatch } = useColorPaletteContext();
-  const colorVariant: ColorVariant = state[colorVariantId];
-
-  const { value, isLocked } = colorVariant;
-
-  const [colorState, setColorState] = useState<RGB>(value.rgb);
-
-  useEffect(() => setColorState(value.rgb), [value]);
-
-  const handleChange = (color: ColorResult) => {
-    if (isLocked) {
-      return;
-    }
-
-    const { rgb, hex }: ColorResult = { ...color };
-    const alpha: number = rgb.a || DEFAULT_ALPHA_CHANNEL_VALUE;
-
-    const newColor: ColorVariant = generateColorVariant(hex, alpha);
-
-    setColorState(rgb);
-
-    dispatch({
-      type: PALETTE_ACTIONS.SetColor,
-      payload: { id: colorVariantId, newColorVariant: newColor },
-    });
-  };
+  const [colorState, handleChange] = useHandleColorChange(colorVariantId);
 
   return (
     <div className={styles.pickerContainer}>
       <div className={styles.closeButtonContainer}>
         <IcoButton icon={<GrFormClose />} isDark={true} onClick={handleClose} />
       </div>
+
       <ChromePicker
         styles={chromePickerStyles}
         color={colorState}
