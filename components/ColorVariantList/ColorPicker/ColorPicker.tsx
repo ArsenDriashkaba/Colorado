@@ -1,11 +1,11 @@
 import { MouseEventHandler } from "react";
-import useHandleColorChange from "../../../hooks/useHandleColorChange";
-import { ChromePicker } from "react-color";
-
-import IcoButton from "../../IcoButton/IcoButton";
 import { GrFormClose } from "react-icons/gr";
 
-import chromePickerStyles from "./styles";
+import useHandleColorChange from "../../../hooks/useHandleColorChange";
+
+import IcoButton from "../../IcoButton/IcoButton";
+import CustomColorPicker from "./CustomColorPicker/CustomColorPicker";
+
 import styles from "./ColorPicker.module.css";
 
 interface Props {
@@ -22,11 +22,7 @@ const ColorPicker = ({ colorVariantId, handleClose }: Props): JSX.Element => {
         <IcoButton icon={<GrFormClose />} isDark={true} onClick={handleClose} />
       </div>
 
-      <ChromePicker
-        styles={chromePickerStyles}
-        color={colorState}
-        onChange={handleChange}
-      />
+      <CustomColorPicker onChange={handleChange} color={colorState} />
     </div>
   );
 };

@@ -13,13 +13,20 @@ body {
   --text-color: rgb(77, 77, 77);
   --text-dark-color: rgb(54, 54, 54);
 
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow: 0 0.4rem 0.4rem var(--shadow-color);
+
   --border-radius-1: 1rem;
   --border-radius-2: 1.5rem;
+  --border-radius-3: 0.7rem;
 
   --font-size-1: 5.6rem;
   --font-size-2: 2.6rem;
   --font-size-3: 2rem;
   --font-size-4: 1.6rem;
+
+  --saturation-channel-height: 6rem;
+  --color-channel-height: 2.5rem;
 
   --header-height: 15vh;
 
@@ -49,6 +56,10 @@ h3 {
 
 p {
   font-size: var(--font-size-3);
+}
+
+label {
+  font-size: var(--font-size-4);
 }
 
 button {

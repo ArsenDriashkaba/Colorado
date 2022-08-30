@@ -16,7 +16,7 @@ const useHandleColorChange = (
   colorVariantId: number
 ): HandleColorChangeHook => {
   const { state, dispatch } = useColorPaletteContext();
-  const colorVariant: ColorVariant = state[colorVariantId];
+  const colorVariant: ColorVariant = state?.[colorVariantId];
 
   const { value, isLocked } = colorVariant;
 

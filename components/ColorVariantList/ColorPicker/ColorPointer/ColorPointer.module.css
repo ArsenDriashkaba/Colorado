@@ -1,0 +1,7 @@
+.pointer {
+  width: 0.8rem;
+  height: var(--color-channel-height);
+  border: 0.2rem solid white;
+  border-radius: var(--border-radius-3);
+  box-shadow: var(--shadow);
+}
