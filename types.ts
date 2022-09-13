@@ -44,4 +44,9 @@ export interface ColorVariant {
 
 export type PaletteState = Array<ColorVariant>;
 
+export interface PaletteInfo {
+  name: string;
+  colorVariants: PaletteState;
+}
+
 export type ColorModel = RGB | HSV | HSL | HexString;

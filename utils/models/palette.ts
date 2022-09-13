@@ -1,18 +1,13 @@
 import { Schema, models, model } from "mongoose";
 
 import {
-  PaletteState,
+  PaletteInfo,
   ColorVariant,
   ColorValue,
   RGB,
   HSV,
   HSL,
 } from "../../types";
-
-interface Palette {
-  name: string;
-  colors: PaletteState;
-}
 
 const rgbSchema = new Schema<RGB>({
   r: { type: Number, required: true },
@@ -48,9 +43,9 @@ const colorVariantSchema = new Schema<ColorVariant>({
   isDark: { type: Boolean, required: true },
 });
 
-const paletteSchema = new Schema<Palette>({
+const paletteSchema = new Schema<PaletteInfo>({
   name: { type: String, required: true },
-  colors: { type: [colorVariantSchema], required: true },
+  colorVariants: { type: [colorVariantSchema], required: true },
 });
 
 const Palette = models.Palette || model("Palette", paletteSchema);

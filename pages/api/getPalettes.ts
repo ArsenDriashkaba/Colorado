@@ -8,18 +8,16 @@ import { PaletteInfo } from "../../types";
 
 import { SERVER_ERROR_MESSAGE } from "../../constants/apiMessages";
 
-type resData = string;
+type resData = Array<PaletteInfo> | string;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<resData>) => {
-  if (req.method === "POST") {
+  if (req.method === "GET") {
     try {
-      const newPalette: PaletteInfo = req.body;
-
       await connectDatabase();
 
-      await Palette.create(newPalette);
+      const allPalettes: resData = await Palette.find({});
 
-      res.status(200).send("New palette was successfully created");
+      res.status(200).send(allPalettes);
     } catch (error) {
       res.status(500).send(SERVER_ERROR_MESSAGE);
     }
