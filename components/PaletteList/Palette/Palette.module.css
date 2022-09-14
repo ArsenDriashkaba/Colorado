@@ -1,0 +1,6 @@
+.container {
+  background-color: beige;
+  border: none;
+  border-radius: var(--border-radius-1);
+  margin: 0.5rem;
+}

@@ -5,7 +5,7 @@ import {
 } from "next";
 import Head from "next/head";
 
-import Menu from "../components/Menu/Menu";
+import PaletteList from "../components/PaletteList/PaletteList";
 
 import axiosClient from "../utils/axiosClient";
 
@@ -13,7 +13,7 @@ import styles from "../styles/Library.module.css";
 
 import { PaletteInfo } from "../types";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const response = await axiosClient.get("getPalettes");
   const palettes: Array<PaletteInfo> = response?.data;
 
@@ -25,8 +25,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Editor: NextPage = ({
   palettes,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(palettes);
-
   return (
     <div className={styles.container}>
       <Head>
@@ -35,7 +33,7 @@ const Editor: NextPage = ({
         <link rel="icon" href="/static/icons/chromatic.png" />
       </Head>
       <main>
-        <Menu />
+        <PaletteList palettes={palettes} />
       </main>
     </div>
   );
