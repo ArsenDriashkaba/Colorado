@@ -1,4 +1,7 @@
 import LinkButton from "../LinkButton/LinkButton";
+
+import { BUTTON_TYPES } from "../../types";
+
 import styles from "./Banner.module.css";
 
 const Banner = (): JSX.Element => {
@@ -11,7 +14,7 @@ const Banner = (): JSX.Element => {
         Save your creativness and use it whereever you want. <br />
         Try it for free right now.
       </p>
-      <LinkButton href="editor" text="Try it now" />
+      <LinkButton href="editor" text="Try it now" type={BUTTON_TYPES.Default} />
     </article>
   );
 };

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import IcoButton from "../IcoButton/IcoButton";
+import LinkButton from "../LinkButton/LinkButton";
 import Logo from "../Logo/Logo";
 import { SiLibrariesdotio } from "react-icons/si";
 import { RiRefreshFill, RiSaveFill } from "react-icons/ri";
@@ -10,9 +11,9 @@ import { generateColorPalette } from "../../utils/colors";
 
 import { useColorPaletteContext } from "../../state/colorPaletteContext";
 import { PALETTE_ACTIONS } from "../../state/types";
+import { BUTTON_TYPES, PaletteState } from "../../types";
 
 import styles from "./Menu.module.css";
-import { PaletteState } from "../../types";
 
 const Menu = (): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
@@ -36,7 +37,13 @@ const Menu = (): JSX.Element => {
 
       <ul className={styles.menuWrapper}>
         <li>
-          <IcoButton text="Library" icon={<SiLibrariesdotio />} isDark={true} />
+          <LinkButton
+            text={"Library"}
+            icon={<SiLibrariesdotio />}
+            isDark={true}
+            href={"/library"}
+            type={BUTTON_TYPES.IconButton}
+          />
         </li>
 
         <li>

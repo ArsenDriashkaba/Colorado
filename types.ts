@@ -50,3 +50,8 @@ export interface PaletteInfo {
 }
 
 export type ColorModel = RGB | HSV | HSL | HexString;
+
+export enum BUTTON_TYPES {
+  Default = "default",
+  IconButton = "icon button",
+}
