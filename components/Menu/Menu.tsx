@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import IcoButton from "../IcoButton/IcoButton";
 import LinkButton from "../LinkButton/LinkButton";
 import Logo from "../Logo/Logo";
@@ -7,29 +5,13 @@ import { SiLibrariesdotio } from "react-icons/si";
 import { RiRefreshFill, RiSaveFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 
-import { generateColorPalette } from "../../utils/colors";
-
-import { useColorPaletteContext } from "../../state/colorPaletteContext";
-import { PALETTE_ACTIONS } from "../../state/types";
-import { BUTTON_TYPES, PaletteState } from "../../types";
+import { BUTTON_TYPES } from "../../types";
 
 import styles from "./Menu.module.css";
+import useGenerateColorPalette from "../../hooks/useGenerateColorPalette";
 
 const Menu = (): JSX.Element => {
-  const { state, dispatch } = useColorPaletteContext();
-
-  const setPalette = (palette?: PaletteState) => {
-    const generatedPalette: PaletteState = generateColorPalette(palette);
-
-    dispatch({
-      type: PALETTE_ACTIONS.SetPalette,
-      payload: { palette: generatedPalette },
-    });
-  };
-
-  const handleGeneratePalette = () => setPalette(state);
-
-  useEffect(setPalette, [dispatch]);
+  const { handleGeneratePalette } = useGenerateColorPalette();
 
   return (
     <nav className={styles.container}>
