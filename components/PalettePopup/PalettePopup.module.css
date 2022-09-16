@@ -1,0 +1,10 @@
+.content {
+  background: white;
+  margin: auto;
+  width: 30vw;
+  height: 30vh;
+  border-radius: var(--border-radius-1);
+  padding: 5%;
+  box-shadow: var(--shadow);
+  font-size: var(--font-size-3);
+}

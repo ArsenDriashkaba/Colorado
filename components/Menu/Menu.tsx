@@ -4,6 +4,7 @@ import Logo from "../Logo/Logo";
 import { SiLibrariesdotio } from "react-icons/si";
 import { RiRefreshFill, RiSaveFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
+import PalettePopup from "../PalettePopup/PalettePopup";
 
 import { BUTTON_TYPES } from "../../types";
 
@@ -39,7 +40,11 @@ const Menu = (): JSX.Element => {
               />
             </li>
             <li>
-              <IcoButton text="Save" icon={<RiSaveFill />} isDark={true} />
+              <PalettePopup
+                trigger={
+                  <IcoButton text="Save" icon={<RiSaveFill />} isDark={true} />
+                }
+              />
             </li>
           </ul>
         </li>
