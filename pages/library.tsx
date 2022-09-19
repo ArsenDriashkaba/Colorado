@@ -14,7 +14,7 @@ import styles from "../styles/Library.module.css";
 import { PaletteInfo } from "../types";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await axiosClient.get("getPalettes");
+  const response = await axiosClient.get("palettes");
   const palettes: Array<PaletteInfo> = response?.data;
 
   return {
