@@ -21,7 +21,8 @@ const ColorVariant = ({ colorVariantId }: Props): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
   const [isColorPickerOpen, setIsColorPickerOpen] = useState<boolean>(false);
 
-  const { value, isLocked, isDark }: ColorVariant = state[colorVariantId];
+  const { value, isLocked, isDark }: ColorVariant =
+    state.colorVariants[colorVariantId];
   const rgb: RGB = value.rgb;
 
   const handleLock = () =>

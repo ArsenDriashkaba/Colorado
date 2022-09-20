@@ -1,5 +1,15 @@
-import { PaletteAction, PALETTE_ACTIONS } from "./types";
-import { PaletteState, ColorVariant } from "../types";
+import { PaletteAction, PalettePayload, PALETTE_ACTIONS } from "./types";
+import { PaletteState, ColorVariant, ColorVariants } from "../types";
+
+// const modifyPaletteColorById = (state: PaletteState, payload: PalettePayload): ColorVariants => {
+//   return state.colorVariants.map((colorVariant: ColorVariant, id:number) => {
+//     if (payload.newColorVariant && id === payload.id) {
+//       return payload.newColorVariant;
+//     }
+
+//     return colorVariant;
+//   });
+// };
 
 const colorPaletteReducer = (
   state: PaletteState,
@@ -7,23 +17,33 @@ const colorPaletteReducer = (
 ): PaletteState => {
   const { type, payload } = action;
 
+  //TODO: Refactoring needed
+
   switch (type) {
     case PALETTE_ACTIONS.SetColor:
-      return state.map((colorVariant: ColorVariant, id) => {
-        if (id === payload.id) {
-          return payload.newColorVariant;
-        }
+      const newPalette: ColorVariants = state.colorVariants.map(
+        (colorVariant: ColorVariant, id) => {
+          if (id === payload.id) {
+            return payload.newColorVariant;
+          }
 
-        return colorVariant;
-      });
+          return colorVariant;
+        }
+      );
+
+      return { ...state, colorVariants: newPalette };
     case PALETTE_ACTIONS.ToggleLock:
-      return state.map((colorVariant: ColorVariant, id) => {
-        if (id === payload.id) {
-          return { ...colorVariant, isLocked: !colorVariant.isLocked };
-        }
+      const newPalette1: ColorVariants = state.colorVariants.map(
+        (colorVariant: ColorVariant, id) => {
+          if (id === payload.id) {
+            return { ...colorVariant, isLocked: !colorVariant.isLocked };
+          }
 
-        return colorVariant;
-      });
+          return colorVariant;
+        }
+      );
+
+      return { ...state, colorVariants: newPalette1 };
     case PALETTE_ACTIONS.SetPalette:
       return payload.palette;
     default:

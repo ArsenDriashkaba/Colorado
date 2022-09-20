@@ -21,6 +21,11 @@ export interface PalettePayloadSetPalette {
   palette: PaletteState;
 }
 
+export type PalettePayload =
+  | PalettePayloadChangeColor
+  | PalettePayloadSetPalette
+  | PalettePayloadToggleLock;
+
 export type PaletteAction =
   | {
       type: PALETTE_ACTIONS.SetColor;

@@ -42,11 +42,11 @@ export interface ColorVariant {
   isDark: boolean;
 }
 
-export type PaletteState = Array<ColorVariant>;
+export type ColorVariants = Array<ColorVariant>;
 
-export interface PaletteInfo {
+export interface PaletteState {
   name: string;
-  colorVariants: PaletteState;
+  colorVariants: ColorVariants;
 }
 
 export type ColorModel = RGB | HSV | HSL | HexString;

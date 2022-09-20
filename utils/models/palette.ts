@@ -1,7 +1,7 @@
 import { Schema, models, model } from "mongoose";
 
 import {
-  PaletteInfo,
+  PaletteState,
   ColorVariant,
   ColorValue,
   RGB,
@@ -43,7 +43,7 @@ const colorVariantSchema = new Schema<ColorVariant>({
   isDark: { type: Boolean, required: true },
 });
 
-const paletteSchema = new Schema<PaletteInfo>({
+const paletteSchema = new Schema<PaletteState>({
   name: { type: String, required: true },
   colorVariants: { type: [colorVariantSchema], required: true },
 });

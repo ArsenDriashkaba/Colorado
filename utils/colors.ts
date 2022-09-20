@@ -10,9 +10,14 @@ import {
   HSV,
   ColorValue,
   ColorModelObject,
+  ColorVariants,
 } from "../types";
 
-import { NUMBER_OF_COLORS, DEFAULT_ALPHA_CHANNEL_VALUE } from "../constants";
+import {
+  NUMBER_OF_COLORS,
+  DEFAULT_ALPHA_CHANNEL_VALUE,
+  DEFAULT_PALETTE_NAME,
+} from "../constants";
 
 const colorObjectToRgba = (colorObject: Color, alpha?: number): RGB => {
   const { r, g, b }: ColorModelObject = { ...colorObject.object() };
@@ -36,6 +41,29 @@ const colorObjectToHsl = (colorObject: Color, alpha?: number): HSL => {
   return { h, s, l, a: alpha || DEFAULT_ALPHA_CHANNEL_VALUE };
 };
 
+const generatePaletteFromScratch = (): PaletteState => {
+  const colorVariants: ColorVariants = [...Array(NUMBER_OF_COLORS)].map(
+    (_): ColorVariant => generateColorVariant()
+  );
+
+  return { name: DEFAULT_PALETTE_NAME, colorVariants };
+};
+
+const regenerateUnlockedColors = (paletteState: PaletteState): PaletteState => {
+  const palette: ColorVariants = paletteState.colorVariants;
+  const newPalette: ColorVariants = palette.map(
+    (colorVariant): ColorVariant => {
+      if (colorVariant.isLocked) {
+        return colorVariant;
+      }
+
+      return generateColorVariant();
+    }
+  );
+
+  return { ...paletteState, colorVariants: newPalette };
+};
+
 export const generateColorVariant = (
   color?: HexString,
   alpha?: number
@@ -53,20 +81,14 @@ export const generateColorVariant = (
   return { isLocked: false, isDark, value };
 };
 
-export const generateColorPalette = (palette?: PaletteState): PaletteState => {
-  if (!palette) {
-    return [...Array(NUMBER_OF_COLORS)].map(
-      (_): ColorVariant => generateColorVariant()
-    );
+export const generateColorPalette = (
+  paletteState?: PaletteState
+): PaletteState => {
+  if (!paletteState?.colorVariants) {
+    return generatePaletteFromScratch();
   }
 
-  return palette.map((colorVariant): ColorVariant => {
-    if (colorVariant.isLocked) {
-      return colorVariant;
-    }
-
-    return generateColorVariant();
-  });
+  return regenerateUnlockedColors(paletteState);
 };
 
 export const rgbaToCssString = (rgbValue: RGB): string => {

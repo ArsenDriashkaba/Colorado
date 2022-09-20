@@ -11,11 +11,11 @@ import axiosClient from "../utils/axiosClient";
 
 import styles from "../styles/Library.module.css";
 
-import { PaletteInfo } from "../types";
+import { PaletteState } from "../types";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await axiosClient.get("palettes");
-  const palettes: Array<PaletteInfo> = response?.data;
+  const palettes: Array<PaletteState> = response?.data;
 
   return {
     props: { palettes },
