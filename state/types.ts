@@ -6,6 +6,7 @@ export enum PALETTE_ACTIONS {
   SetColor = "set_color",
   ToggleLock = "toggle_lock",
   SetPalette = "set_palete",
+  SetName = "set_name",
 }
 
 export interface PalettePayloadChangeColor {
@@ -21,10 +22,15 @@ export interface PalettePayloadSetPalette {
   palette: PaletteState;
 }
 
+export interface PalettePayloadSetName {
+  name: string;
+}
+
 export type PalettePayload =
   | PalettePayloadChangeColor
   | PalettePayloadSetPalette
-  | PalettePayloadToggleLock;
+  | PalettePayloadToggleLock
+  | PalettePayloadSetName;
 
 export type PaletteAction =
   | {
@@ -38,6 +44,10 @@ export type PaletteAction =
   | {
       type: PALETTE_ACTIONS.SetPalette;
       payload: PalettePayloadSetPalette;
+    }
+  | {
+      type: PALETTE_ACTIONS.SetName;
+      payload: PalettePayloadSetName;
     };
 
 export interface PaletteContext {

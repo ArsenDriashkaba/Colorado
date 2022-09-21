@@ -1,15 +1,5 @@
-import { PaletteAction, PalettePayload, PALETTE_ACTIONS } from "./types";
+import { PaletteAction, PALETTE_ACTIONS } from "./types";
 import { PaletteState, ColorVariant, ColorVariants } from "../types";
-
-// const modifyPaletteColorById = (state: PaletteState, payload: PalettePayload): ColorVariants => {
-//   return state.colorVariants.map((colorVariant: ColorVariant, id:number) => {
-//     if (payload.newColorVariant && id === payload.id) {
-//       return payload.newColorVariant;
-//     }
-
-//     return colorVariant;
-//   });
-// };
 
 const colorPaletteReducer = (
   state: PaletteState,
@@ -44,6 +34,8 @@ const colorPaletteReducer = (
       );
 
       return { ...state, colorVariants: newPalette1 };
+    case PALETTE_ACTIONS.SetName:
+      return { ...state, name: payload.name };
     case PALETTE_ACTIONS.SetPalette:
       return payload.palette;
     default:
