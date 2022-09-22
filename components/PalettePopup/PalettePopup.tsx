@@ -7,6 +7,10 @@ import { PopupActions } from "reactjs-popup/dist/types";
 import { useColorPaletteContext } from "../../state/colorPaletteContext";
 import useInputChange from "../../hooks/useInputChange";
 
+import { PALETTE_ACTIONS } from "../../state/types";
+import axiosClient from "../../utils/axiosClient";
+import { PALETTES } from "../../constants/apiEndpoints";
+
 import styles from "./PalettePopup.module.css";
 
 interface Props {
@@ -18,30 +22,34 @@ const PalettePopup = ({ trigger }: Props): JSX.Element => {
   const { state, dispatch } = useColorPaletteContext();
   const { inputValue: paletteName, handleChange } = useInputChange(state.name);
 
-  const handleSubmit = (event: BaseSyntheticEvent): void => {
+  const handleSubmit = async (event: BaseSyntheticEvent) => {
     event.preventDefault();
-    /*
-    TODO:
-      - On Submit form we change name of palette in the context
-      - Next we create post request to our DB and trying to push our palette.
-      - We will receive some message if it was succesfull or not.
-      - Show the result to user.
-    */
 
-    ref?.current?.close();
+    try {
+      const reqData = { ...state, name: paletteName };
+      const response = await axiosClient.post(PALETTES, reqData);
+      console.log(response.data);
+
+      dispatch({
+        type: PALETTE_ACTIONS.SetName,
+        payload: { name: paletteName },
+      });
+
+      ref?.current?.close();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <Popup trigger={trigger} ref={ref} closeOnDocumentClick modal nested>
-      <form className={styles.content}>
+      <form className={styles.content} onSubmit={handleSubmit}>
         <Input
           placeholder="Palette Name"
           value={paletteName}
           onChange={handleChange}
         />
-        <button type="submit" onClick={handleSubmit}>
-          Save
-        </button>
+        <button type="submit">Save</button>
       </form>
     </Popup>
   );

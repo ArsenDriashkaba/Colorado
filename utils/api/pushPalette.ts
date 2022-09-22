@@ -4,7 +4,7 @@ import connectDatabase from "../../utils/database";
 
 import Palette from "../../utils/models/palette";
 
-import { PaletteInfo } from "../../types";
+import { PaletteState } from "../../types";
 
 import { SERVER_ERROR_MESSAGE } from "../../constants/apiMessages";
 
@@ -15,7 +15,7 @@ const pushPalette = async (
   res: NextApiResponse<resData>
 ) => {
   try {
-    const newPalette: PaletteInfo = req.body;
+    const newPalette: PaletteState = req.body;
 
     await connectDatabase();
 
