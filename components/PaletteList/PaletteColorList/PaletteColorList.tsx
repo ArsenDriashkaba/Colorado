@@ -1,11 +1,11 @@
 import PaletteColor from "../PaletteColor/PaletteColor";
 
-import { PaletteState } from "../../../types";
+import { ColorVariants, PaletteState } from "../../../types";
 
 import styles from "./PaletteColorList.module.css";
 
 interface Props {
-  paletteColors: PaletteState;
+  paletteColors: ColorVariants;
 }
 
 const PaletteColorList = ({ paletteColors }: Props): JSX.Element => {

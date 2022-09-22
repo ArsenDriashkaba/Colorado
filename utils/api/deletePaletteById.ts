@@ -13,7 +13,7 @@ import {
 
 type resData = Array<PaletteState> | string;
 
-const getPaletteById = async (
+const deletePaletteById = async (
   req: NextApiRequest,
   res: NextApiResponse<resData>
 ) => {
@@ -26,10 +26,12 @@ const getPaletteById = async (
       res.status(400).send(CLIENT_ERROR_MESSAGE);
     }
 
+    await Palette.deleteOne({ _id: req.query.id });
+
     res.status(200).send(paletteData);
   } catch (error) {
     res.status(500).send(SERVER_ERROR_MESSAGE);
   }
 };
 
-export default getPaletteById;
+export default deletePaletteById;

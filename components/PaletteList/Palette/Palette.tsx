@@ -3,12 +3,12 @@ import PaletteColorList from "../PaletteColorList/PaletteColorList";
 
 import { RiDeleteBinFill } from "react-icons/ri";
 
-import { PaletteInfo } from "../../../types";
+import { PaletteState } from "../../../types";
 
 import styles from "./Palette.module.css";
 
 interface Props {
-  paletteData: PaletteInfo;
+  paletteData: PaletteState;
 }
 
 const Palette = ({ paletteData }: Props): JSX.Element => {

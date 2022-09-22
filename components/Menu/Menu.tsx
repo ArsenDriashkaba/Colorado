@@ -1,15 +1,16 @@
 import IcoButton from "../IcoButton/IcoButton";
 import LinkButton from "../LinkButton/LinkButton";
 import Logo from "../Logo/Logo";
+import PalettePopup from "../PalettePopup/PalettePopup";
+
 import { SiLibrariesdotio } from "react-icons/si";
 import { RiRefreshFill, RiSaveFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
-import PalettePopup from "../PalettePopup/PalettePopup";
 
 import { BUTTON_TYPES } from "../../types";
+import useGenerateColorPalette from "../../hooks/useGenerateColorPalette";
 
 import styles from "./Menu.module.css";
-import useGenerateColorPalette from "../../hooks/useGenerateColorPalette";
 
 const Menu = (): JSX.Element => {
   const { handleGeneratePalette } = useGenerateColorPalette();

@@ -1,11 +1,11 @@
 import Palette from "./Palette/Palette";
 
-import { PaletteInfo } from "../../types";
+import { PaletteState } from "../../types";
 
 import styles from "./PaletteList.module.css";
 
 interface Props {
-  palettes: Array<PaletteInfo>;
+  palettes: Array<PaletteState>;
 }
 
 const PaletteList = ({ palettes }: Props): JSX.Element => {
