@@ -11,17 +11,15 @@ import { PALETTE_ACTIONS } from "../../state/types";
 import axiosClient from "../../utils/axiosClient";
 import { PALETTES } from "../../constants/apiEndpoints";
 
-import styles from "./PalettePopup.module.css";
+import { handleErrorNotification } from "../../utils/helpers/paletteActionNotifications";
 import toastNotification from "../../utils/helpers/toastNotifications";
 import { NOTIFICATION_TYPES } from "../../types";
-import { PALETTE_ACTION_ERROR } from "../../constants/paletteActionNotifications";
+
+import styles from "./PalettePopup.module.css";
 
 interface Props {
   trigger: JSX.Element;
 }
-
-const handleErrorNotification = (): void =>
-  toastNotification(NOTIFICATION_TYPES.Error, PALETTE_ACTION_ERROR);
 
 const PalettePopup = ({ trigger }: Props): JSX.Element => {
   const ref = useRef<PopupActions>(null);

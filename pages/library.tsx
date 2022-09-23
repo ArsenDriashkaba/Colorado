@@ -11,11 +11,11 @@ import axiosClient from "../utils/axiosClient";
 
 import styles from "../styles/Library.module.css";
 
-import { PaletteState } from "../types";
+import { PalettesInfo } from "../types";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await axiosClient.get("palettes");
-  const palettes: Array<PaletteState> = response?.data;
+  const palettes: PalettesInfo = response?.data;
 
   return {
     props: { palettes },
@@ -33,7 +33,7 @@ const Editor: NextPage = ({
         <link rel="icon" href="/static/icons/chromatic.png" />
       </Head>
       <main>
-        <PaletteList palettes={palettes} />
+        <PaletteList palettesData={palettes} />
       </main>
     </div>
   );

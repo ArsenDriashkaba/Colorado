@@ -45,9 +45,12 @@ export interface ColorVariant {
 export type ColorVariants = Array<ColorVariant>;
 
 export interface PaletteState {
+  _id?: string;
   name: string;
   colorVariants: ColorVariants;
 }
+
+export type PalettesInfo = Array<PaletteState>;
 
 export type ColorModel = RGB | HSV | HSL | HexString;
 

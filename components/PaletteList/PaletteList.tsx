@@ -1,18 +1,26 @@
+import { useState } from "react";
 import Palette from "./Palette/Palette";
 
-import { PaletteState } from "../../types";
+import { PalettesInfo } from "../../types";
+
+import { deletePaletteFromArray } from "../../utils/helpers/palettes";
 
 import styles from "./PaletteList.module.css";
 
 interface Props {
-  palettes: Array<PaletteState>;
+  palettesData: PalettesInfo;
 }
 
-const PaletteList = ({ palettes }: Props): JSX.Element => {
+const PaletteList = ({ palettesData }: Props): JSX.Element => {
+  const [palettes, setPalettes] = useState<PalettesInfo>(palettesData);
+
+  const deleter = (_id: string): void =>
+    setPalettes(deletePaletteFromArray(_id, palettes));
+
   return (
     <section className={styles.container}>
       {palettes.map((paletteData, index) => (
-        <Palette paletteData={paletteData} key={index} />
+        <Palette paletteData={paletteData} key={index} deleter={deleter} />
       ))}
     </section>
   );

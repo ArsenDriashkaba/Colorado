@@ -19,14 +19,14 @@ const deletePaletteById = async (
 ) => {
   try {
     await connectDatabase();
-
-    const paletteData: resData = await Palette.find({ _id: req.query.id });
+    const id = req.query.id;
+    const paletteData: resData = await Palette.find({ _id: id });
 
     if (!paletteData) {
       res.status(400).send(CLIENT_ERROR_MESSAGE);
     }
 
-    await Palette.deleteOne({ _id: req.query.id });
+    await Palette.deleteOne({ _id: id });
 
     res.status(200).send(paletteData);
   } catch (error) {
