@@ -31,6 +31,9 @@ body {
   --header-height: 15vh;
 
   --menu-width: 17.5%;
+
+  /*_________TOASTIFY_VARIABLES______________*/
+  --toastify-toast-width: 30vw;
 }
 
 * {
@@ -80,4 +83,9 @@ button {
 
 button:hover {
   transform: scale(1.1);
+}
+
+/* ____________TOASTIFY NOTIFICATIONS_________________*/
+.Toastify__toast-container {
+  font-size: var(--font-size-4);
 }

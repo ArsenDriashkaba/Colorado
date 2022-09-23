@@ -55,3 +55,11 @@ export enum BUTTON_TYPES {
   Default = "default",
   IconButton = "icon button",
 }
+
+export enum NOTIFICATION_TYPES {
+  Info = "info",
+  Success = "success",
+  Warning = "warning",
+  Error = "error",
+  Default = "default",
+}

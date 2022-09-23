@@ -12,10 +12,16 @@ import axiosClient from "../../utils/axiosClient";
 import { PALETTES } from "../../constants/apiEndpoints";
 
 import styles from "./PalettePopup.module.css";
+import toastNotification from "../../utils/helpers/toastNotifications";
+import { NOTIFICATION_TYPES } from "../../types";
+import { PALETTE_ACTION_ERROR } from "../../constants/paletteActionNotifications";
 
 interface Props {
   trigger: JSX.Element;
 }
+
+const handleErrorNotification = (): void =>
+  toastNotification(NOTIFICATION_TYPES.Error, PALETTE_ACTION_ERROR);
 
 const PalettePopup = ({ trigger }: Props): JSX.Element => {
   const ref = useRef<PopupActions>(null);
@@ -28,16 +34,22 @@ const PalettePopup = ({ trigger }: Props): JSX.Element => {
     try {
       const reqData = { ...state, name: paletteName };
       const response = await axiosClient.post(PALETTES, reqData);
-      console.log(response.data);
 
-      dispatch({
-        type: PALETTE_ACTIONS.SetName,
-        payload: { name: paletteName },
-      });
+      if (response.data) {
+        toastNotification(NOTIFICATION_TYPES.Success, response.data);
+
+        dispatch({
+          type: PALETTE_ACTIONS.SetName,
+          payload: { name: paletteName },
+        });
+      } else {
+        handleErrorNotification();
+      }
 
       ref?.current?.close();
     } catch (err) {
       console.log(err);
+      handleErrorNotification();
     }
   };
 

@@ -7,6 +7,7 @@ import Palette from "../../utils/models/palette";
 import { PaletteState } from "../../types";
 
 import { SERVER_ERROR_MESSAGE } from "../../constants/apiMessages";
+import { PALETTE_SAVED_SUCCESSFULLY } from "../../constants/paletteActionNotifications";
 
 type resData = string;
 
@@ -21,7 +22,7 @@ const pushPalette = async (
 
     await Palette.create(newPalette);
 
-    res.status(200).send("New palette was successfully created");
+    res.status(200).send(PALETTE_SAVED_SUCCESSFULLY);
   } catch (error) {
     res.status(500).send(SERVER_ERROR_MESSAGE);
   }

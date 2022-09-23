@@ -14,7 +14,6 @@ import styles from "./Menu.module.css";
 
 const Menu = (): JSX.Element => {
   const { handleGeneratePalette } = useGenerateColorPalette();
-
   return (
     <nav className={styles.container}>
       <Logo />
